@@ -11,20 +11,20 @@ class Person:
 def create_person_list(people: list) -> list:
     person_list = []
 
-    for humen in people:
-        name = humen.get("name")
-        age = humen.get("age")
+    for human in people:
+        name = human.get("name")
+        age = human.get("age")
 
         person = Person(name, age)
         person_list.append(person)
 
-    for humen in people:
-        current_person = Person.people.get(humen["name"])
-        current_wife = humen.get("wife")
+    for human in people:
+        current_person = Person.people.get(human["name"])
+        current_wife = human.get("wife")
         if current_wife:
             current_person.wife = Person.people[current_wife]
 
-        current_husband = humen.get("husband")
+        current_husband = human.get("husband")
         if current_husband:
             current_person.husband = Person.people[current_husband]
 
