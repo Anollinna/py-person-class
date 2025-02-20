@@ -1,8 +1,31 @@
 class Person:
-    # write your code here
-    pass
+    people = {}
+
+    def __init__(self, name: str, age: int) -> None:
+        self.name = name
+        self.age = age
+
+        Person.people[self.name] = self
 
 
 def create_person_list(people: list) -> list:
-    # write your code here
-    pass
+    person_list = []
+
+    for humen in people:
+        name = humen.get("name")
+        age = humen.get("age")
+
+        person = Person(name, age)
+        person_list.append(person)
+
+    for humen in people:
+        current_person = Person.people.get(humen["name"])
+        current_wife = humen.get("wife")
+        if current_wife:
+            current_person.wife = Person.people[current_wife]
+
+        current_husband = humen.get("husband")
+        if current_husband:
+            current_person.husband = Person.people[current_husband]
+
+    return person_list
